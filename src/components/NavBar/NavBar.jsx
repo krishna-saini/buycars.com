@@ -16,7 +16,11 @@ function NavBar() {
   };
   return (
     <nav className={styles.nav}>
-      <ul className={styles.navList}>
+      <ul
+        className={`${styles.navList} ${
+          !session && !loading ? "laoding" : "loaded"
+        }`}
+      >
         <li className={styles.navItem}>
           <Link href="/" className={styles.navLink}>
             Home
