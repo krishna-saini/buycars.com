@@ -6,6 +6,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 function NavBar() {
   const { session, loading } = useSession(); // useSession is a React hook
+  console.log("session", session, loading);
   const handleClick = (e) => {
     e.preventDefault();
     if (e.target.textContent === "Sign In") {
@@ -18,7 +19,7 @@ function NavBar() {
     <nav className={styles.nav}>
       <ul
         className={`${styles.navList} ${
-          !session && !loading ? "laoding" : "loaded"
+          !session && !loading ? "loading" : "loaded"
         }`}
       >
         <li className={styles.navItem}>

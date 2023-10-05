@@ -1,12 +1,9 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import NavBar from "../components/NavBar/NavBar";
-
-const inter = Inter({ subsets: ["latin"] });
+import { useSession } from "next-auth/react";
 
 export default function Home() {
+  const { session, status } = useSession();
   return (
     <>
       <Head>
@@ -15,9 +12,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <NavBar />
-        <h1>Please sign in to see the functionality</h1>
+      <main className={styles.main}>
+        <h1>
+          {session
+            ? `Welcome ${session.user.name}, to buycars.com`
+            : "Welcome to buycars.com. Please sign in to see the full functionality"}
+        </h1>
       </main>
     </>
   );

@@ -9,4 +9,11 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  database: process.env.DB_URL,
+  session: {
+    jwt: true,
+  },
+  jwt: {
+    secret: process.env.JWT_SECRET,
+  }
 });
