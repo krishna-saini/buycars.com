@@ -1,0 +1,30 @@
+/* components/NavBar.module.css */
+
+.nav {
+  background-color: #8d99ae;
+  padding: 1rem;
+  border-bottom: 1px solid #000;
+}
+
+.navList {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navItem {
+  margin: 0;
+  list-style-type: none;
+}
+
+.navLink {
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.a:hover {
+  background-color: #555;
+}
