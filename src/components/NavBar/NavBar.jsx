@@ -5,7 +5,7 @@ import styles from "./NavBar.module.css"; // Import the CSS module
 import { signIn, signOut, useSession } from "next-auth/react";
 
 function NavBar() {
-  //   const router = useRouter();
+  const { session, loading } = useSession(); // useSession is a React hook
   const handleClick = (e) => {
     e.preventDefault();
     if (e.target.textContent === "Sign In") {
@@ -32,24 +32,29 @@ function NavBar() {
             All Cars
           </Link>
         </li>
-        <li className={styles.navItem}>
-          <Link
-            href="/api/auth/signin"
-            className={styles.navLink}
-            onClick={() => handleClick}
-          >
-            Sign In
-          </Link>
-        </li>
-        <li className={styles.navItem}>
-          <Link
-            href="/api/auth/signout"
-            className={styles.navLink}
-            onClick={() => handleClick}
-          >
-            Sign Out
-          </Link>
-        </li>
+        {!loading && !session && (
+          <li className={styles.navItem}>
+            <Link
+              href="/api/auth/signin"
+              className={styles.navLink}
+              onClick={() => handleClick}
+            >
+              Sign In
+            </Link>
+          </li>
+        )}
+
+        {session && (
+          <li className={styles.navItem}>
+            <Link
+              href="/api/auth/signout"
+              className={styles.navLink}
+              onClick={() => handleClick}
+            >
+              Sign Out
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );
